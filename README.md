@@ -51,6 +51,7 @@ We'll create a directory for CoaL, move to it, download CoaL with 5 streams (the
 
 On my end, the max speed I could get was about 3MiB/s, so expect this to take about 10 minutes or so as the file is 1.9GiB compressed. 
 
+##### Download and Unpack Script
 ```
 cd
 mkdir CoaL
@@ -60,3 +61,20 @@ tar -xzvf coal-latest.tgz
 rm coal-latest.tgz
 ``` 
 
+##### Check Folder Structure
+
+Now that the script is done, if we run `find .`, the folder structure should like something like this:
+
+```
+.
+./boot_archive.manifest
+./coal-release-20160804-20160804T215306Z-g3ce6e16-4gb.vmwarevm
+./coal-release-20160804-20160804T215306Z-g3ce6e16-4gb.vmwarevm/4gb.img
+./coal-release-20160804-20160804T215306Z-g3ce6e16-4gb.vmwarevm/USB-headnode.vmdk
+./coal-release-20160804-20160804T215306Z-g3ce6e16-4gb.vmwarevm/USB-headnode.vmsd
+./coal-release-20160804-20160804T215306Z-g3ce6e16-4gb.vmwarevm/USB-headnode.vmx
+./coal-release-20160804-20160804T215306Z-g3ce6e16-4gb.vmwarevm/USB-headnode.vmxf
+./coal-release-20160804-20160804T215306Z-g3ce6e16-4gb.vmwarevm/zpool.vmdk
+./root.password.20160804t173034z
+./usb_key.manifest
+```
