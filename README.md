@@ -24,6 +24,12 @@ This guide is based on having:
 
 We'll need to have VMware Fusion installed, along with a few other tools. For this, I'll use the awesome Homebrew tool. 
 
+#### Install Homebrew
+
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+```
+
 #### VMware Fusion Setup
 
 ##### Installation
@@ -40,4 +46,17 @@ Appologies to the Joyent folks, but the server sharing CoaL is quite slow and ha
 `brew install aria2`
 
 #### Cloud on a Laptop Download
-`aria2 -x 5` 
+
+We'll create a directory for CoaL, move to it, download CoaL with 5 streams (the max from the Joyent servers as of this writing), then extract the archive and remove the source file. 
+
+On my end, the max speed I could get was about 3MiB/s, so expect this to take about 10 minutes or so as the file is 1.9GiB compressed. 
+
+```
+cd
+mkdir CoaL
+cd CoaL
+aria2c -x 5 https://us-east.manta.joyent.com/Joyent_Dev/public/SmartDataCenter/coal-latest.tgz
+tar -xzvf coal-latest.tgz
+rm coal-latest.tgz
+``` 
+
