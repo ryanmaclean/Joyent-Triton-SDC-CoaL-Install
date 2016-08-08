@@ -38,6 +38,32 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 ##### First Run
 `vmware-fusion &` 
 
+##### Setup Networks
+
+Note that before proceeding, you'll want to turn off/suspend any VMs you have running, or you'll be met with the following: 
+
+```
+You have Virtual Machines running. Please shut them down before continuing.
+```
+
+If you're OK simply turning it all of and suspending, you can do that like so:
+
+```
+if [ -d "/Applications/VMware Fusion.app/Contents/Library" ]; then export PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"; fi
+vms=(vmrun list | sed -n '1!p')
+for (( vm=0; vm < ${#vms[@]}; vm++ )); do vmrun stop "${vms[$vm]// /\\ }"
+```
+
+The guide sets up two networks: 
+* External network on 10.0.88.0/24
+* Admin network on 10.0.99.0/24
+
+These can be edited in the bash script if neeed. For now, we're going to YOLO-style curl-bash:
+
+```
+curl -s https://raw.githubusercontent.com/joyent/sdc/master/tools/coal-mac-vmware-setup | sudo bash
+```
+
 #### Aria2 Setup 
 
 Appologies to the Joyent folks, but the server sharing CoaL is quite slow and has yet to resume a failed download, so I'll be recommending the use of the Aria2 downloader here which will support 5 retries by default, and we'll use it to connect to the server more than once in order to increase speed. 
