@@ -71,6 +71,7 @@ Appologies to the Joyent folks, but the server sharing CoaL is quite slow and ha
 
 `brew install aria2`
 
+
 #### Cloud on a Laptop Download
 
 We'll create a directory for CoaL, move to it, download CoaL with 5 streams (the max from the Joyent servers as of this writing), then extract the archive and remove the source file. 
@@ -82,7 +83,7 @@ On my end, the max speed I could get was about 3MiB/s, so expect this to take ab
 cd
 mkdir CoaL
 cd CoaL
-aria2c -x 5 https://us-east.manta.joyent.com/Joyent_Dev/public/SmartDataCenter/coal-latest.tgz
+aria2c -x 5 https://us-east.manta.joyent.com/Joyent_Dev/public/SmartDataCenter/coal-latest.tgz --async-dns=false
 tar -xzvf coal-latest.tgz
 rm coal-latest.tgz
 ``` 
